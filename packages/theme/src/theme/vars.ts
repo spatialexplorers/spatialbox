@@ -1,12 +1,7 @@
 const _vars =  {
-  "vars": {
-    "bla": {
-      "primary": "#61dafb",
-      "secondary": "pink"
-    },
-    "bli": "#666666",
-    "blu": "#EEEEEE"
-  }
+  "--color-primary-background-base": "#2664f4",
+  "--color-primary-background-darker": "#104adb",
+  "--color-primary-font": "#e3eeff"
 };
-  export type Vars = typeof _vars;
-  export const vars = _vars as Vars;
+export type ThemeVars = typeof _vars;
+export const themeVars = _vars as ThemeVars;

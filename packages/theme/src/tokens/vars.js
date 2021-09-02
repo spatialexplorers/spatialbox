@@ -3,21 +3,17 @@ module.exports = {
     color: {
       primary: {
         background: {
-          value: "{color.base.blue.400.value}"
+          base: {
+            value: "{color.base.blue.400.value}"
+          },
+          darker: {
+            value: "{color.base.blue.500.value}"
+          }
         },
         font: {
           value: "{color.base.blue.50.value}"
         }
-      },
-      secondary: {
-        value: "pink"
       }
-    },
-    bli: {
-      value: "#666666"
-    },
-    blu: {
-      value: "#EEEEEE"
     }
   }
 };

@@ -8,7 +8,7 @@ export const themeFormat: Named<Format> = {
     dictionary.allTokens.forEach((token) => {
       if (token.original.value.indexOf("{vars.") > -1) {
         let v = token.original.value.replace("{vars.", "").replace(".value}", "");
-        token.value = `--${v.replace(".", "-")}`;
+        token.value = `var(--${v.replaceAll(".", "-")})`;
       }
     });
 

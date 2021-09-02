@@ -50,7 +50,9 @@
     "lint:src": "eslint src --ext .ts,.tsx --config ../../.eslintrc",
     "lint:types": "tsc --noEmit"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@spatialbox/theme": "^1.0.0"
+  },
   "peerDependencies": {
     "react": ">=17.0.2"
   }

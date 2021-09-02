@@ -3,32 +3,22 @@ module.exports = {
     button: {
       variants: {
         primary: {
-          color: "{vars.colors.primary.font.value}",
-          background: {
-            base: "{vars.colors.primary.background.value}",
-            hover: "{vars.colors.primary.font.value}"
+          base: {
+            color: { value: "{vars.color.primary.font.value}" },
+            background: { value: "{vars.color.primary.background.base.value}" }
+          },
+          hover: {
+            background: { value: "{vars.color.primary.background.darker.value}" }
           }
         },
-        secondary: {
-          color: tokens.colors.bg[100],
-          background: {
-            default: tokens.colors.bg[600],
-            hover: tokens.colors.bg[500]
-          }
-        },
-        outline: {},
-        cta: {
-          color: tokens.colors.bg[50],
-          background: {
-            default: tokens.colors.primary[500],
-            hover: tokens.colors.primary[600]
-          }
-        },
-        negative: {
-          color: tokens.colors.bg[50],
-          background: {
-            default: tokens.colors.red[500],
-            hover: tokens.colors.red[600]
+        outline: {
+          base: {
+            color: { value: "{vars.color.primary.font.value}" },
+            background: { value: "transparent" },
+            borderColor: { value: "{vars.color.primary.background.base.value}" }
+          },
+          hover: {
+            background: { value: "{vars.color.primary.background.base.value}" }
           }
         }
       }
