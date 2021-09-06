@@ -1,7 +1,7 @@
 import * as React from "react";
-import { styled } from "@spatialbox/theme";
+import { styled, cssComponent } from "@spatialbox/theme";
 
-export type ButtonVariant = "cta" | "primary" | "secondary" | "negative";
+export type ButtonVariant = "cta" | "primary" | "secondary" | "outline" | "negative";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
@@ -31,5 +31,5 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 
 export const ButtonContainer = styled.button`
-  color: ${(props) => props.theme.color.base.blue};
+  ${(props) => cssComponent(props.theme.component.button)};
 `;

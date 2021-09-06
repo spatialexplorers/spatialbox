@@ -2,7 +2,7 @@ import { StoryContext } from "@storybook/react";
 import * as React from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { withPerformance } from "storybook-addon-performance";
-
+import { ThemeProvider } from "@spatialbox/theme";
 /**
  * Add global context for RTL-LTR switching
  */
@@ -18,15 +18,15 @@ export const globalTypes = {
   }
 };
 
-const withChakra = (StoryFn: Function, context: StoryContext) => {
-  const { direction } = context.globals;
-  const dir = direction.toLowerCase();
-
+const withSpatialbox = (StoryFn: Function, context: StoryContext) => {
+  console.log("huhuh");
   return (
-    <div dir={dir} id="story-wrapper" style={{ minHeight: "100vh" }}>
-      <StoryFn />
+    <div id="story-wrapper" style={{ minHeight: "100vh" }}>
+      <ThemeProvider>
+        <StoryFn />
+      </ThemeProvider>
     </div>
   );
 };
 
-export const decorators = [withChakra, withPerformance];
+export const decorators = [withSpatialbox, withPerformance];

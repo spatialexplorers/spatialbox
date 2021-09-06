@@ -14,7 +14,18 @@ export default {
 
 export const basic = () => (
   <>
-    <Button>Button 1</Button>
-    <Button>Button 2</Button>
+    <Button variant="cta">Button CTA</Button>
+    <Button variant="primary">Button Primary</Button>
+    <Button variant="secondary">Button Secondary</Button>
+    <Button variant="outline">Button outline</Button>
+  </>
+);
+
+export const withSizes = () => (
+  <>
+    <Button size="xs">Button xs</Button>
+    <Button size="sm">Button sm</Button>
+    <Button size="md">Button md</Button>
+    <Button size="lg">Button lg</Button>
   </>
 );

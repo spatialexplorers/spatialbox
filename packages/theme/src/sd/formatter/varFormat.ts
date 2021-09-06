@@ -13,13 +13,15 @@ export const varFormat: Named<Format> = {
       }
     });
 
-    //     return `const _vars =  ${JSON.stringify(minifyDictionary(dictionary.tokens), null, 2)};
-    // export type ThemeVars = typeof _vars;
-    // export const themeVars = _vars as ThemeVars;
-    // `;
-    return `const _vars =  ${flatten(dictionary.allTokens)};
+    const vars = JSON.stringify(minifyDictionary(dictionary.tokens).vars, null, 2);
+    const defs = flatten(dictionary.allTokens);
+
+    return `const _vars =  ${vars};
+const _defs = ${defs};
 export type ThemeVars = typeof _vars;
+export type ThemeVarDefs = typeof _defs;
 export const themeVars = _vars as ThemeVars;
+export const themeVarDefs = _defs as ThemeVarDefs;
 `;
   }
 };

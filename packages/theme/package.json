@@ -38,6 +38,7 @@
   },
   "scripts": {
     "dict": "ts-node ./src/build.ts",
+    "dict-watch": "ts-node ./src/build.ts --watch",
     "prebuild": "rimraf dist",
     "start": "nodemon --watch src --exec yarn build -e ts,tsx",
     "build": "concurrently yarn:build:*",
@@ -58,6 +59,7 @@
     "react": ">=17.0.2"
   },
   "devDependencies": {
+    "chokidar": "^3.5.2",
     "style-dictionary": "^3.0.2"
   }
 }
