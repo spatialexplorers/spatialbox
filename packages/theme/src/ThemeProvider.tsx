@@ -21,8 +21,6 @@ export function ThemeProvider({ theme = defaultTheme, vars = themeVars, children
     return toCSSVars(vars);
   }, [vars]);
 
-  console.log("parsed", parsedVariables);
-
   return (
     <ThemeProviderContext.Provider value={{ theme }}>
       <Global

@@ -19,7 +19,6 @@ export const globalTypes = {
 };
 
 const withSpatialbox = (StoryFn: Function, context: StoryContext) => {
-  console.log("huhuh");
   return (
     <div id="story-wrapper" style={{ minHeight: "100vh" }}>
       <ThemeProvider>

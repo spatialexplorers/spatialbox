@@ -1,7 +1,7 @@
 {
-  "name": "@spatialbox/{{lowerCase componentName}}",
+  "name": "@spatialbox/shared",
   "version": "1.0.0",
-  "description": "{{description}}",
+  "description": "shared types and code",
   "keywords": [
     "theme",
     "theming",
@@ -31,7 +31,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/spatialexplorers/spatialbox.git",
-    "directory": "packages/{{componentName}}"
+    "directory": "packages/shared"
   },
   "bugs": {
     "url": "https://github.com/spatialexplorers/spatialbox/issues"

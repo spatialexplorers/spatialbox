@@ -1,7 +1,7 @@
 {
-  "name": "@spatialbox/{{lowerCase componentName}}",
+  "name": "@spatialbox/dialog",
   "version": "1.0.0",
-  "description": "{{description}}",
+  "description": "Dialogs modals and popovers",
   "keywords": [
     "theme",
     "theming",
@@ -31,7 +31,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/spatialexplorers/spatialbox.git",
-    "directory": "packages/{{componentName}}"
+    "directory": "packages/dialog"
   },
   "bugs": {
     "url": "https://github.com/spatialexplorers/spatialbox/issues"
@@ -50,7 +50,10 @@
     "lint:src": "eslint src --ext .ts,.tsx --config ../../.eslintrc",
     "lint:types": "tsc --noEmit"
   },
-  "dependencies": {},
+  "dependencies": {
+    "framer-motion": "^4.1.17",
+    "react-laag": "^2.0.3"
+  },
   "peerDependencies": {
     "react": ">=17.0.2"
   }
