@@ -1,0 +1,17 @@
+{
+  "name": "@spatialbox/theming",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "copy": "spatialbox-cli copy default ./test",
+    "clean": "rm -rf .turbo && rm -rf node_modules"
+  },
+  "dependencies": {
+    "@spatialbox/theme": "*"
+  },
+  "devDependencies": {
+    "@spatialbox/tsconfig": "*",
+    "eslint-config-spatialbox": "*",
+    "typescript": "^4.7.4"
+  }
+}
