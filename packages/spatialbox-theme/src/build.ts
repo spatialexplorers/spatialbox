@@ -1,10 +1,9 @@
 import StyleDictionary from "style-dictionary";
-import chokidar from "chokidar";
 import { themeFormat, varFormat } from "./sd/formatter";
 
-function build() {
+export function build(src: string) {
   const dict = StyleDictionary.extend({
-    source: ["./src/tokens/**/*.js"],
+    source: [`${src}/tokens/**/*.js`],
     platforms: {
       js: {
         transformGroup: "js",
@@ -36,13 +35,3 @@ function build() {
 }
 
 build();
-
-if (process.argv && process.argv.length > 2) {
-  const watcher = chokidar.watch("./src/tokens/**/*.js", {
-    awaitWriteFinish: true
-  });
-  watcher.on("change", function (path) {
-    console.log("File " + path + " has been changed");
-    build();
-  });
-}

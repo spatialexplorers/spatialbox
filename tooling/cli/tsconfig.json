@@ -1,0 +1,6 @@
+{
+  "extends": "@spatialbox/tsconfig/node16.json",
+  "include": ["."],
+  "exclude": ["dist", "build", "node_modules"]
+}
+
