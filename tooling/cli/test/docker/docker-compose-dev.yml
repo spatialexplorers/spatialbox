@@ -1,0 +1,61 @@
+version: "3.8"
+
+services:
+  db:
+    image: "postgis/postgis:${POSTGIS_VERSION}"
+    container_name: zooplatform_database
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+    volumes:
+      - zooplatform_db_data:/var/lib/postgresql/data/pgdata
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_DB: ${DB_NAME}
+      PGDATA: "../var/lib/postgresql/data/pgdata"
+
+  hasura:
+    image: hasura/graphql-engine:${HASURA_VERSION}.cli-migrations-v3
+    container_name: zooplatform_backend
+    ports:
+      - "8080:8080"
+    links:
+      - db
+    restart: unless-stopped
+    environment:
+      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://${DB_USER}:${DB_PASSWORD}@db:${DB_PORT}/${DB_NAME}
+      HASURA_GRAPHQL_DATABASE_URL: postgres://${DB_USER}:${DB_PASSWORD}@db:${DB_PORT}/${DB_NAME}
+      HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_ADMIN_SECRET}
+      HASURA_GRAPHQL_UNAUTHORIZED_ROLE: ${HASURA_GRAPHQL_UNAUTHORIZED_ROLE:-anonymous}
+      HASURA_GRAPHQL_DEV_MODE: "true"
+    volumes:
+      - zooplatform_hasura_data:/var/lib/postgresql/data/pgdata
+      - ../data/hasura/migrations:/hasura-migrations
+      - ../data/hasura/metadata:/hasura-metadata
+
+  # tileserver:
+  #   image: gospatial/tegola:${TEGOLA_VERSION}
+  #   container_name: zooplatform_tileserver
+  #   restart: unless-stopped
+  #   ports:
+  #     - 7800:7800
+  #   depends_on:
+  #     - db
+  #   environment:
+  #     TEGOLA_DB_USER: ${DB_USER}
+  #     TEGOLA_DB_NAME: ${DB_NAME}
+  #     TEGOLA_DB_PASSWORD: ${DB_PASSWORD}
+  #     TEGOLA_DB_PORT: ${DB_PORT}
+  #     TEGOLA_DB_HOST: db
+  #   volumes:
+  #     - ./config.toml:/opt/tegola_config/config.toml
+  #   command: --config /opt/tegola_config/config.toml serve
+
+volumes:
+  zooplatform_db_data:
+  zooplatform_hasura_data:

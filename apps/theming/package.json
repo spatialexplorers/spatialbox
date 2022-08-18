@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "copy": "spatialbox-cli copy default ./test",
+    "copy-tokens": "sbox theme tokens ./theme",
+    "generate-theme": "sbox theme build ./theme",
     "clean": "rm -rf .turbo && rm -rf node_modules"
   },
   "dependencies": {
-    "@spatialbox/theme": "*"
+    "@spatialbox/cli": "*"
   },
   "devDependencies": {
     "@spatialbox/tsconfig": "*",

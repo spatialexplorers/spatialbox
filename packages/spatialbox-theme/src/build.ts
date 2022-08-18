@@ -1,13 +1,14 @@
 import StyleDictionary from "style-dictionary";
 import { themeFormat, varFormat } from "./sd/formatter";
 
-export function build(src: string) {
+export async function build(src: string) {
+  let buildPath = src.endsWith("/") ? src : src + "/";
   const dict = StyleDictionary.extend({
     source: [`${src}/tokens/**/*.js`],
     platforms: {
       js: {
         transformGroup: "js",
-        buildPath: "./src/base/",
+        buildPath: buildPath,
         files: [
           {
             filter: function (token) {
@@ -33,5 +34,3 @@ export function build(src: string) {
 
   dict.buildAllPlatforms();
 }
-
-build();

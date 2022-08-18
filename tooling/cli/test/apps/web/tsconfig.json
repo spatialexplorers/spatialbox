@@ -1,0 +1,12 @@
+{
+  "exclude": ["node_modules"],
+  "extends": "tsconfig/nextjs.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "module": "CommonJS",
+    "outDir": "dist",
+    "incremental": true,
+    "baseUrl": "./src"
+  },
+  "include": ["src", "next-env.d.ts"]
+}

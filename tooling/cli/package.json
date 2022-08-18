@@ -2,16 +2,17 @@
   "name": "@spatialbox/cli",
   "version": "0.0.0",
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "sideEffects": false,
   "license": "MIT",
   "files": [
-    "dist/**",
-    "bin"
+    "/dist",
+    "/bin",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
   ],
   "bin": {
-    "sbox": "bin/index.js"
+    "sbox": "./bin/run"
   },
   "oclif": {
     "bin": "sbox",
@@ -25,11 +26,14 @@
     "topics": {
       "hello": {
         "description": "Say hello to the world and others"
+      },
+      "theme": {
+        "description": "Theme tooling"
       }
     }
   },
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "build": "shx rm -rf dist && tsc -b",
     "lint": "eslint . --ext .ts --config .eslintrc",
     "postpack": "shx rm -f oclif.manifest.json",
     "posttest": "yarn lint",
@@ -42,13 +46,13 @@
     "@oclif/test": "2.1.0",
     "@spatialbox/tsconfig": "*",
     "@types/fs-plus": "^3.0.2",
-    "@types/ncp": "^2.0.5",
     "@types/node": "18.0.6",
     "chokidar": "^3.5.3",
     "eslint": "^8.20.0",
-    "eslint-config-spatialbox": "*",
     "eslint-config-oclif": "^4",
     "eslint-config-oclif-typescript": "^1.0.2",
+    "eslint-config-spatialbox": "*",
+    "oclif": "3.1.1",
     "shx": "^0.3.4",
     "ts-node": "^10.9.1",
     "tsup": "^6.1.3",
@@ -58,10 +62,13 @@
     "access": "public"
   },
   "dependencies": {
-    "fs-plus": "^3.1.1",
-    "ncp": "^2.0.0",
-    "@oclif/core": "1.10.0",
+    "@oclif/core": "1.11.0",
     "@oclif/plugin-help": "5.1.12",
-    "@oclif/plugin-plugins": "2.1.0"
+    "@oclif/plugin-plugins": "2.1.0",
+    "@spatialbox/theme": "*",
+    "cosmiconfig": "^7.0.1",
+    "fs-plus": "^3.1.1",
+    "handlebars": "^4.7.7",
+    "recursive-copy": "^2.0.14"
   }
 }
